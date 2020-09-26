@@ -8,13 +8,13 @@ services:
     restart: always
     build: 
       dockerfile: Dockerfile.dev
-      context: ./nginx
+      context: .
     ports:
       - '3050:80'
   api:
     build: 
-    dockerfile: Dockerfile.dev
-    context: ./server
+      dockerfile: Dockerfile.dev
+      context: ./server
     volumes:
       - /app/node_modules
       - ./server:/app
@@ -33,10 +33,10 @@ services:
     volumes:
       - /app/node_modules
       - ./client:/app  
-  worker:
-    build: 
-      dockerfile: Dockerfile.dev
-      context: ./worker
-    volumes:
-      - app/node_modules
-      - ./worker:app
+  # worker:
+  #   build: 
+  #     dockerfile: Dockerfile.dev
+  #     context: ./worker
+  #   volumes:
+  #     - app/node_modules
+  #     - ./worker:app
